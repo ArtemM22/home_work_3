@@ -6,12 +6,16 @@ import re
     '''
 def normalize_phone (phone_number):
     # Видалення всіх символів, крім цифр
-    cleaned_numbers = re.sub(r'[^0-9]', '', phone_number)
-    if cleaned_numbers.startswith('380'):
+    cleaned_numbers = re.sub(r'[^0-9]', '', phone_number.strip())
+    if cleaned_numbers.startswith('+'):
+        cleaned_numbers = cleaned_numbers
+    elif cleaned_numbers.startswith('00'):
+        cleaned_numbers = '+' + cleaned_numbers[2:]
+    elif cleaned_numbers.startswith('380'):
         cleaned_numbers = '+' + cleaned_numbers
     else:
         cleaned_numbers = '+38' + cleaned_numbers
-    return (cleaned_numbers)
+    return cleaned_numbers
 
 raw_numbers = [
     "    +38(050)123-32-34",

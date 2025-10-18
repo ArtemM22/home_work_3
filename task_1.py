@@ -14,5 +14,5 @@ def get_days_from_today(date):
         print('Помилка неправильного формату дати. Використовуйте формат "YYYY-MM-DD"')
         return None
 
-date = '2024-10-18'
+date = '2024-10-10'
 get_days_from_today(date)
